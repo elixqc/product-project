@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechElite - Premium Laptops</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #fdcb6e;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #fdcb6e;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #fdcb6e;
+            color: #2d3748;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('/api/placeholder/1200/400') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #fdcb6e;
+            color: #2d3748;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ffeaa7;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features */
+        .features {
+            padding: 3rem 0;
+            background-color: white;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00cec9;
+        }
+
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        /* Products */
+        .products {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #fdcb6e;
+            color: #2d3748;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .product-description {
+            color: #718096;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .product-specs {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .product-spec {
+            background-color: #edf2f7;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .product-price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6c5ce7;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #a0aec0;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .testimonials .section-title::after {
+            background: #fdcb6e;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial {
+            min-width: 300px;
+            scroll-snap-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+            border: 2px solid #fdcb6e;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 3rem 0;
+            background-color: #f0f4f8;
+        }
+
+        .newsletter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #718096;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .newsletter-btn {
+            background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: linear-gradient(135deg, #5d4aec 0%, #00b5b1 100%);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d3748;
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: #f7fafc;
+        }
+
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #00cec9;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fdcb6e;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #4a5568;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #00cec9;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #4a5568;
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .testimonial {
+                min-width: 250px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .newsletter-input, .newsletter-btn {
+                width: 100%;
+                border-radius: 5px;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from {opacity: 0; transform: translateY(-30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #6c5ce7;
+        }
+
+        .modal-product {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .modal-product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .modal-product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .continue-btn {
+            background-color: #edf2f7;
+            color: #4a5568;
+            border: none;
+        }
+
+        .continue-btn:hover {
+            background-color: #e2e8f0;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+            color: white;
+            border: none;
+        }
+
+        .checkout-btn:hover {
+            background: linear-gradient(135deg, #5d4aec 0%, #00b5b1 100%);
+        }
+
+        /* Rating Stars */
+        .rating {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .star {
+            color: #fdcb6e;
+            margin-right: 2px;
+        }
+
+        /* Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Tech<span>Elite</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" onclick="openModal()">
+                🛒
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Premium Laptops for Every Need</h1>
+            <p>Experience unparalleled performance with our curated selection of high-quality laptops. From everyday computing to professional workstations.</p>
+            <a href="#products" class="btn pulse">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container features-container">
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Express Shipping</h3>
+                <p>Get your laptop delivered within 2 business days at no extra cost.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>2-Year Warranty</h3>
+                <p>Peace of mind with our extended warranty on all products.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">↩️</div>
+                <h3>30-Day Returns</h3>
+                <p>Not satisfied? Return within 30 days for a full refund.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Laptops</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://i.imgur.com/puqtMuz.jpeg" alt="UltraBook Pro X1">
+                        <div class="product-badge">BEST SELLER</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <span>(128 reviews)</span>
+                        </div>
+                        <h3 class="product-name">UltraBook Pro X1</h3>
+                        <p class="product-description">The ultimate professional laptop with a stunning 4K display, lightning-fast performance, and all-day battery life.</p>
+                        <div class="product-specs">
+                            <div class="product-spec">Intel i9 12th Gen</div>
+                            <div class="product-spec">32GB RAM</div>
+                            <div class="product-spec">1TB SSD</div>
+                            <div class="product-spec">RTX 3080</div>
+                            <div class="product-spec">15.6" 4K OLED</div>
+                        </div>
+                        <div class="product-price-container">
+                            <div>
+                                <span class="product-price">₱40,000</span>
+                                <span class="old-price">₱45,000</span>
+                            </div>
+                            <button class="btn" onclick="addToCart('UltraBook Pro X1', 40000)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src= "https://i.imgur.com/5qH0lsM.jpeg" alt="CloudBook Air">
+                        <div class="product-badge">NEW</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <span>(89 reviews)</span>
+                        </div>
+                        <h3 class="product-name">CloudBook Air</h3>
+                        <p class="product-description">Ultra-thin and lightweight laptop perfect for on-the-go productivity. Amazing battery life with fast charging.</p>
+                        <div class="product-specs">
+                            <div class="product-spec">Intel i7 12th Gen</div>
+                            <div class="product-spec">16GB RAM</div>
+                            <div class="product-spec">512GB SSD</div>
+                            <div class="product-spec">Intel Iris Xe</div>
+                            <div class="product-spec">13.3" Retina</div>
+                        </div>
+                        <div class="product-price-container">
+                            <div>
+                                <span class="product-price">₱60,000</span>
+                                <span class="old-price">₱70,000</span>
+                            </div>
+                            <button class="btn" onclick="addToCart('CloudBook Air', 60000)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src= "https://i.imgur.com/NjDAWB3.jpeg" alt="GameMaster Pro">
+                        <div class="product-badge">GAMING</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="rating">
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <div class="star">★</div>
+                            <span>(203 reviews)</span>
+                        </div>
+                        <h3 class="product-name">GameMaster Pro</h3>
+                        <p class="product-description">Dominate the competition with this high-performance gaming laptop featuring cutting-edge graphics and a 240Hz display.</p>
+                        <div class="product-specs">
+                            <div class="product-spec">AMD Ryzen 9</div>
+                            <div class="product-spec">32GB RAM</div>
+                            <div class="product-spec">2TB SSD</div>
+                            <div class="product-spec">RTX 4090</div>
+                            <div class="product-spec">17.3" 240Hz</div>
+                        </div>
+                        <div class="product-price-container">
+                            <div>
+                                <span class="product-price">₱57,000</span>
+                                <span class="old-price">₱60,000</span>
+                            </div>
+                            <button class="btn" onclick="addToCart('GameMaster Pro', 57000)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The UltraBook Pro X1 has completely transformed my workflow. The speed and display quality are unmatched. Highly recommend for any professional!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.imgur.com/C1Z3MHf.jpeg" alt="John Smith" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Nico Barredo</h4>
+                            <p>Graphic Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"CloudBook Air is the perfect laptop for my busy lifestyle. It's so light I barely notice it in my bag, and the battery lasts all day!"</p>
+                    <div class="testimonial-author">
+                        <img src= "https://i.imgur.com/tE2ngCg.jpeg" alt="Emily Johnson" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Marcus Aristain</h4>
+                            <p>Marketing Executive</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a professional gamer, the GameMaster Pro gives me the competitive edge I need. The 240Hz display and RTX graphics card make a huge difference."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.imgur.com/elc2nHG.jpeg" alt="Alex Rodriguez" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Kenneth pogi</h4>
+                            <p>Professional Gamer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for exclusive deals, new product announcements, and tech tips delivered straight to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>TechElite</h3>
+                <p>MADE BY: BARREDO NICO E. BSIT - S - 1A</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Customer Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Warranty Information</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>123 Tech Street, San Francisco</li>
+                    <li>support@techelite.com</li>
+                    <li>+1 (555) 123-4567</li>
+                    <li>Mon-Fri: 9am - 6pm EST</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; Barredo, Nico E. BSIT - S - 1A || ADVANCE HTML.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cartItems">
+                <p>Your cart is empty.</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn continue-btn" onclick="closeModal()">Continue Shopping</button>
+                <button class="modal-btn checkout-btn" onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let cart = [];
+    let cartCount = 0;
+    
+    // Add to cart function
+    function addToCart(productName, price) {
+        // Determine which image to use based on product name
+        let imagePath;
+        if (productName === "UltraBook Pro X1") {
+            imagePath = "https://i.imgur.com/puqtMuz.jpeg";
+        } else if (productName === "CloudBook Air") {
+            imagePath = "https://i.imgur.com/5qH0lsM.jpeg";
+        } else if (productName === "GameMaster Pro") {
+            imagePath = "https://i.imgur.com/NjDAWB3.jpeg";
+        }
+        
+        cart.push({
+            name: productName,
+            price: price,
+            quantity: 1,
+            image: imagePath // Store the image path
+        });
+        cartCount++;
+        updateCartCount();
+        showAddedToCartMessage(productName);
+    }
+    
+    // Update cart count display
+    function updateCartCount() {
+        document.querySelector('.cart-count').textContent = cartCount;
+    }
+    
+    // Show added to cart message
+    function showAddedToCartMessage(productName) {
+        alert(`${productName} added to cart!`);
+    }
+    
+    // Open cart modal
+    function openModal() {
+        const modal = document.getElementById('cartModal');
+        const cartItems = document.getElementById('cartItems');
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            let cartHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                cartHTML += `
+                    <div class="modal-product">
+                        <img src="${item.image}" alt="${item.name}" class="modal-product-image">
+                        <div class="modal-product-info">
+                            <h3>${item.name}</h3>
+                            <p>&#8369;${item.price.toLocaleString()}</p>
+                            <p>Quantity: ${item.quantity}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartHTML += `<div class="modal-total"><h3>Total: &#8369;${total.toLocaleString()}</h3></div>`;
+            cartItems.innerHTML = cartHTML;
+        }
+        
+        modal.style.display = 'block';
+    }
+    
+    // Close cart modal
+    function closeModal() {
+        document.getElementById('cartModal').style.display = 'none';
+    }
+    
+    // Checkout function
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+        } else {
+            alert('Thank you for your purchase! Proceeding to checkout...');
+            cart = [];
+            cartCount = 0;
+            updateCartCount();
+            closeModal();
+        }
+    }
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('cartModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
